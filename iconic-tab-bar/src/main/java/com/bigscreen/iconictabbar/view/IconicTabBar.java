@@ -7,7 +7,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.MenuRes;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 
 import com.bigscreen.iconictabbar.R;
+import com.bigscreen.iconictabbar.helper.ConfigHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,9 +77,9 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
 
     private void initStyle() {
         TypedArray styledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.IconicTabBar);
-        int backgroundColor = styledAttributes.getColor(R.styleable.IconicTabBar_barBackground, getResources().getColor(R.color.white));
-        tabDefaultColor = styledAttributes.getColor(R.styleable.IconicTabBar_tabDefaultColor, getResources().getColor(R.color.defaultColor));
-        tabSelectedColor = styledAttributes.getColor(R.styleable.IconicTabBar_tabSelectedColor, getResources().getColor(R.color.defaultSelectedColor));
+        int backgroundColor = styledAttributes.getColor(R.styleable.IconicTabBar_barBackground, ContextCompat.getColor(getContext(), R.color.white));
+        tabDefaultColor = styledAttributes.getColor(R.styleable.IconicTabBar_tabDefaultColor, ContextCompat.getColor(getContext(), R.color.defaultColor));
+        tabSelectedColor = styledAttributes.getColor(R.styleable.IconicTabBar_tabSelectedColor, ContextCompat.getColor(getContext(), R.color.defaultSelectedColor));
         int menuResId = styledAttributes.getResourceId(R.styleable.IconicTabBar_tabFromMenu, -1);
 
         if (menuResId != -1) {
@@ -97,6 +100,7 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
         tab.setOnTabClickListener(this);
         tabs.add(tab);
         llTabs.addView(tab);
+        initTabSize();
         if (latestTabsSize == 0) {
             selectedTabPosition = 0;
             selectedTab = tab;
@@ -114,6 +118,7 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
         tab.setOnTabClickListener(this);
         tabs.add(tab);
         llTabs.addView(tab);
+        initTabSize();
         if (latestTabsSize == 0) {
             selectedTabPosition = 0;
             selectedTab = tab;
@@ -164,6 +169,26 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
         unSelectedTabPosition = tabPosition;
         onTabSelectedListener.onUnselected(unSelectedTab, unSelectedTabPosition);
         unSelectedTab.setUnselected();
+    }
+
+    private void initTabSize() {
+        int tabCount = tabs.size();
+        int screenWidth = ConfigHelper.getScreenWidth(getContext());
+        int tabMaxWidth = ConfigHelper.getPxFromDimenRes(R.dimen.max_tab_width, getContext());
+        if ((tabMaxWidth * tabCount) > screenWidth) {
+            llTabs.setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+            for (IconicTab tab : tabs) {
+                tab.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1f));
+                tab.setGravity(Gravity.CENTER);
+            }
+        } else {
+            llTabs.setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT,
+                    Gravity.CENTER_HORIZONTAL));
+            for (IconicTab tab : tabs) {
+                tab.setLayoutParams(new LinearLayout.LayoutParams(tabMaxWidth, LayoutParams.MATCH_PARENT));
+                tab.setGravity(Gravity.CENTER);
+            }
+        }
     }
 
     public interface OnTabSelectedListener {

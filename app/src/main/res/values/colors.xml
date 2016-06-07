@@ -6,4 +6,5 @@
 
     <color name="white">#fff</color>
     <color name="textColor">#cc4b4b4b</color>
+    <color name="windowBackground">#f4f4f4</color>
 </resources>
