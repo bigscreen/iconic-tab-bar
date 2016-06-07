@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tab_item"
+    android:layout_width="wrap_content"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="?android:attr/selectableItemBackground"
+    android:gravity="center"
+    android:minWidth="104dp"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="30dp"
+        android:layout_height="26dp">
+
+        <ImageView
+            android:id="@+id/tab_item_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_android" />
+
+        <TextView
+            android:id="@+id/tab_item_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:background="@drawable/bg_badge"
+            android:gravity="center"
+            android:padding="1dp"
+            android:textColor="@android:color/white"
+            android:textSize="8sp"
+            tools:ignore="SmallSp"
+            tools:text="7" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tab_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-4dp"
+        android:singleLine="true"
+        android:textColor="@color/defaultColor"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:visibility="visible"
+        tools:text="Tab" />
+
+</LinearLayout>

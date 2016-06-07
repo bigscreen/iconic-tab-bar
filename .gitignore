@@ -1,0 +1,20 @@
+*.iml
+.DS_STORE
+
+# Local configuration file (sdk path, etc)
+/local.properties
+
+## Directory-based project format:
+.idea
+.idea/workspace.xml
+.idea/libraries
+.idea/misc.xml
+.idea/gradle.xml
+.idea/modules.xml
+.idea/vcs.xml
+*apk
+
+# Gradle files
+.gradle/
+build/
+app/app.iml

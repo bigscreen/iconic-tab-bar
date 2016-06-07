@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="defaultColor">#757575</color>
+    <color name="defaultSelectedColor">#03A9F4</color>
+
+    <color name="badgeColor">#bf3b3b</color>
+
+    <color name="white">#fff</color>
+</resources>

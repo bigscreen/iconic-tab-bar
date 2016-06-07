@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="IconicTabBar">
+        <attr name="barBackground" format="color" />
+        <attr name="tabDefaultColor" format="color" />
+        <attr name="tabSelectedColor" format="color" />
+        <attr name="tabFromMenu" format="reference"/>
+    </declare-styleable>
+
+</resources>
