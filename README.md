@@ -6,7 +6,7 @@
 
 IconicTabBar is an Android custom TabView which its design and pattern are created based on Android BottomBar design pattern (check [this](https://material.google.com/components/bottom-navigation.html)).
 
-<img src="/preview/iconic-tab-bar-demo.gif" alt="sample" title="sample" width="267" height="416" align="right" vspace="52" />
+<img src="/preview/iconic-tab-bar-demo.gif" alt="sample" title="sample" width="267" height="416" align="right" vspace="40" />
 
 
 Usage
@@ -26,7 +26,7 @@ compile 'com.bigscreen:iconic-tab-bar:1.0.1'
     app:tabDefaultColor="#CC4B4B4B"
     app:tabSelectedColor="#3F51B5"/>
 ```
-You must use the following properties in your XML to change your CircularImageView.
+You must use the following properties in your XML to change your IconicTabBar.
 ##### Properties:
 * `app:barBackground`       (color)     -> default #FFF
 * `app:tabDefaultColor`     (color)     -> default #757575
