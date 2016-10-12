@@ -17,12 +17,12 @@ compile 'com.bigscreen:iconic-tab-bar:1.0.1'
 ### XML
 ```xml
 <com.bigscreen.iconictabbar.view.IconicTabBar
-        android:id="@+id/tab_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:barBackground="#FFFFFF"
-        app:tabDefaultColor="#CC4B4B4B"
-        app:tabSelectedColor="#3F51B5"/>
+    android:id="@+id/tab_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:barBackground="#FFFFFF"
+    app:tabDefaultColor="#CC4B4B4B"
+    app:tabSelectedColor="#3F51B5"/>
 ```
 You must use the following properties in your XML to change your CircularImageView.
 ##### Properties:
@@ -39,7 +39,6 @@ app:tabFromMenu="@menu/menu_bottom_bar"
 ```
 But IconicTabBar doesn't support menu grouping. It's recommended to use the simplest `menu` code.
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bottom_chats"
@@ -54,7 +53,7 @@ But IconicTabBar doesn't support menu grouping. It's recommended to use the simp
 Otherwise, you can add tabs programmatically on the Java code.
 ```java
 iconicTabBar.addTab(R.drawable.ic_chats, "Chats");
-iconicTabBar.addTab(R.drawable.ic_chats, "Calls");
+iconicTabBar.addTab(R.drawable.ic_calls, "Calls");
 ```
 ##### Note
 *Maximum tabs to be added on IconicTabBar is only 5. Never to try add more than 5 tabs, or your app will crash!*
