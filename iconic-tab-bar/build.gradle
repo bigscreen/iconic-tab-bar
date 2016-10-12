@@ -101,11 +101,14 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = "maven"
+        repo = 'maven'
         name = libName
+        desc = 'Android TabBar that follows Android BottomBar design pattern.'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
+        issueTrackerUrl = 'https://github.com/bigscreen/iconic-tab-bar/issues'
         licenses = ["Apache-2.0"]
+        labels = ['android', 'bottom-bar', 'custom-view', 'tab', 'tab-layout', 'navigation']
         publish = true
         version {
             gpg {
