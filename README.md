@@ -6,7 +6,7 @@
 
 IconicTabBar is an Android custom TabView which its design and pattern are created based on Android BottomBar design pattern (check [this](https://material.google.com/components/bottom-navigation.html)).
 
-<img src="/preview/iconic-tab-bar-demo.gif" alt="sample" title="sample" width="400" height="624" align="right" vspace="52" />
+<img src="/preview/iconic-tab-bar-demo.gif" alt="sample" title="sample" width="267" height="416" align="right" vspace="52" />
 
 
 Usage
@@ -35,7 +35,7 @@ You must use the following properties in your XML to change your CircularImageVi
 
 Adding Tab
 -----
-You also can add tab items from resourse menu.
+You can add tab items from resource menu.
 ```xml
 app:tabFromMenu="@menu/menu_bottom_bar"
 ```
