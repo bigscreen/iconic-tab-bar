@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bigscreen.iconictabbar.view.IconicTab;
 import com.bigscreen.iconictabbar.view.IconicTabBar;
@@ -36,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
         iconicTabBar = (IconicTabBar) findViewById(R.id.bottom_bar);
         textDemo = (TextView) findViewById(R.id.text_demo);
         textDemo.setText(String.format(getString(R.string.text_demo), "Chats"));
-
-        Toast.makeText(MainActivity.this, "Chats is selected", Toast.LENGTH_SHORT).show();
 
         iconicTabBar.setOnTabSelectedListener(new IconicTabBar.OnTabSelectedListener() {
             @Override
