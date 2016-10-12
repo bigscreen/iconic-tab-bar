@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -57,8 +58,8 @@ public class IconicTab extends LinearLayout {
         tabText = (TextView) findViewById(R.id.tab_item_text);
         tabBadge = (TextView) findViewById(R.id.tab_item_badge);
 
-        tabDefaultColor = getResources().getColor(R.color.defaultColor);
-        tabSelectedColor = getResources().getColor(R.color.defaultSelectedColor);
+        tabDefaultColor = ContextCompat.getColor(getContext(), R.color.defaultColor);
+        tabSelectedColor = ContextCompat.getColor(getContext(), R.color.defaultSelectedColor);
 
         tabIcon.setColorFilter(tabDefaultColor);
         tabText.setTextColor(tabDefaultColor);
@@ -109,6 +110,8 @@ public class IconicTab extends LinearLayout {
 
     public void setTabDefaultColor(int tabDefaultColor) {
         this.tabDefaultColor = tabDefaultColor;
+        tabIcon.setColorFilter(tabDefaultColor);
+        tabText.setTextColor(tabDefaultColor);
     }
 
     public void setTabSelectedColor(int tabSelectedColor) {

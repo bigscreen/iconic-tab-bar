@@ -26,6 +26,8 @@ import java.util.List;
 
 public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickListener {
 
+    public static final int MAX_TAB = 5;
+
     private AttributeSet attributeSet;
 
     private FrameLayout frameTabs;
@@ -91,30 +93,27 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
     }
 
     public void addTab(@DrawableRes int iconResId, String text) {
-        if (tabs == null) tabs = new ArrayList<>();
-        int latestTabsSize = tabs.size();
-        IconicTab tab = new IconicTab(getContext());
-        tab.setTabDefaultColor(tabDefaultColor);
-        tab.setTabSelectedColor(tabSelectedColor);
-        tab.bindData(latestTabsSize, iconResId, text);
-        tab.setOnTabClickListener(this);
-        tabs.add(tab);
-        llTabs.addView(tab);
-        initTabSize();
-        if (latestTabsSize == 0) {
-            selectedTabPosition = 0;
-            selectedTab = tab;
-            tab.setSelected();
-        }
+        addTab(iconResId, null, text);
     }
 
     public void addTab(Drawable iconDrawable, String text) {
+        addTab(0, iconDrawable, text);
+    }
+
+    private void addTab(@DrawableRes int iconResId, Drawable iconDrawable, String text) {
         if (tabs == null) tabs = new ArrayList<>();
         int latestTabsSize = tabs.size();
+        if (latestTabsSize > MAX_TAB) throw new UnsupportedOperationException("Cannot add more than 5 tabs.");
         IconicTab tab = new IconicTab(getContext());
         tab.setTabDefaultColor(tabDefaultColor);
         tab.setTabSelectedColor(tabSelectedColor);
-        tab.bindData(latestTabsSize, iconDrawable, text);
+        if (iconResId == 0 && iconDrawable != null) {
+            tab.bindData(latestTabsSize, iconDrawable, text);
+        } else if (iconResId != 0 && iconDrawable == null) {
+            tab.bindData(latestTabsSize, iconResId, text);
+        } else {
+            throw new NullPointerException("Tab icon was not specified.");
+        }
         tab.setOnTabClickListener(this);
         tabs.add(tab);
         llTabs.addView(tab);
@@ -151,23 +150,21 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
 
     @Override
     public void onTabClick(IconicTab tabBottomBar, int position) {
-        if (onTabSelectedListener != null) {
-            setUnselectedTab(selectedTab, selectedTabPosition);
-            setSelectedTab(tabBottomBar, position);
-        }
+        setUnselectedTab(selectedTab, selectedTabPosition);
+        setSelectedTab(tabBottomBar, position);
     }
 
     private void setSelectedTab(IconicTab tab, int tabPosition) {
         selectedTab = tab;
         selectedTabPosition = tabPosition;
-        onTabSelectedListener.onSelected(selectedTab, selectedTabPosition);
+        if (onTabSelectedListener != null) onTabSelectedListener.onSelected(selectedTab, selectedTabPosition);
         selectedTab.setSelected();
     }
 
     private void setUnselectedTab(IconicTab tab, int tabPosition) {
         unSelectedTab = tab;
         unSelectedTabPosition = tabPosition;
-        onTabSelectedListener.onUnselected(unSelectedTab, unSelectedTabPosition);
+        if (onTabSelectedListener != null) onTabSelectedListener.onUnselected(unSelectedTab, unSelectedTabPosition);
         unSelectedTab.setUnselected();
     }
 
