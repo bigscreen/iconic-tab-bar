@@ -92,19 +92,28 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
         styledAttributes.recycle();
     }
 
-    public void addTab(@DrawableRes int iconResId, String text) {
-        addTab(iconResId, null, text);
+    public void addTab(@DrawableRes int iconResId, CharSequence text) {
+        addTab(0, iconResId, null, text);
     }
 
-    public void addTab(Drawable iconDrawable, String text) {
-        addTab(0, iconDrawable, text);
+    public void addTab(int viewId, @DrawableRes int iconResId, CharSequence text) {
+        addTab(viewId, iconResId, null, text);
     }
 
-    private void addTab(@DrawableRes int iconResId, Drawable iconDrawable, String text) {
+    public void addTab(Drawable iconDrawable, CharSequence text) {
+        addTab(0, 0, iconDrawable, text);
+    }
+
+    public void addTab(int viewId, Drawable iconDrawable, CharSequence text) {
+        addTab(viewId, 0, iconDrawable, text);
+    }
+
+    private void addTab(int viewId, @DrawableRes int iconResId, Drawable iconDrawable, CharSequence text) {
         if (tabs == null) tabs = new ArrayList<>();
         int latestTabsSize = tabs.size();
         if (latestTabsSize > MAX_TAB) throw new UnsupportedOperationException("Cannot add more than 5 tabs.");
         IconicTab tab = new IconicTab(getContext());
+        tab.setId(viewId);
         tab.setTabDefaultColor(tabDefaultColor);
         tab.setTabSelectedColor(tabSelectedColor);
         if (iconResId == 0 && iconDrawable != null) {
@@ -132,7 +141,7 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
         menuInflater.inflate(menuRes, menu);
         for (int i = 0; i < menu.size(); i++) {
             MenuItem item = menu.getItem(i);
-            addTab(item.getIcon(), item.getTitle().toString());
+            addTab(item.getItemId(), item.getIcon(), item.getTitle().toString());
         }
     }
 

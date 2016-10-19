@@ -15,22 +15,22 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/text_demo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_demo"
             android:textColor="@color/textColor"
-            android:textSize="18sp" />
+            android:textSize="30sp"
+            android:layout_centerInParent="true"
+            tools:text="Chats" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <com.bigscreen.iconictabbar.view.IconicTabBar
         android:id="@+id/bottom_bar"

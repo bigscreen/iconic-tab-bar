@@ -34,25 +34,26 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         iconicTabBar = (IconicTabBar) findViewById(R.id.bottom_bar);
         textDemo = (TextView) findViewById(R.id.text_demo);
-        textDemo.setText(String.format(getString(R.string.text_demo), "Chats"));
+        textDemo.setText(R.string.chats);
 
         iconicTabBar.setOnTabSelectedListener(new IconicTabBar.OnTabSelectedListener() {
             @Override
             public void onSelected(IconicTab tab, int position) {
                 Log.d(TAG, "selected tab on= " + position);
-                String demoText = getString(R.string.text_demo);
-                switch (position) {
-                    case 0:
-                        demoText = String.format(demoText, "Chats");
+                String demoText = "";
+                int tabId = tab.getId();
+                switch (tabId) {
+                    case R.id.bottom_chats:
+                        demoText = getString(R.string.chats);
                         break;
-                    case 1:
-                        demoText = String.format(demoText, "Calls");
+                    case R.id.bottom_calls:
+                        demoText = getString(R.string.calls);
                         break;
-                    case 2:
-                        demoText = String.format(demoText, "Contacts");
+                    case R.id.bottom_contacts:
+                        demoText = getString(R.string.contacts);
                         break;
-                    case 3:
-                        demoText = String.format(demoText, "Settings");
+                    case R.id.bottom_settings:
+                        demoText = getString(R.string.settings);
                         break;
                     default:
                         break;

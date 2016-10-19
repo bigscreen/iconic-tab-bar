@@ -76,7 +76,7 @@ public class IconicTab extends LinearLayout {
         onTabItemClick();
     }
 
-    public void bindData(int position, @DrawableRes int iconResId, String text) {
+    public void bindData(int position, @DrawableRes int iconResId, CharSequence text) {
         tabPosition = position;
         tabIcon.setImageResource(iconResId);
         tabText.setText(text);
@@ -84,7 +84,7 @@ public class IconicTab extends LinearLayout {
         onTabItemClick();
     }
 
-    public void bindData(int position, Drawable iconDrawable, String text) {
+    public void bindData(int position, Drawable iconDrawable, CharSequence text) {
         tabPosition = position;
         tabIcon.setImageDrawable(iconDrawable);
         tabText.setText(text);
@@ -92,19 +92,19 @@ public class IconicTab extends LinearLayout {
         onTabItemClick();
     }
 
-    public void setTabIcon(@DrawableRes int iconResId) {
+    public void setIcon(@DrawableRes int iconResId) {
         tabIcon.setImageResource(iconResId);
     }
 
-    public void setTabIcon(Drawable iconDrawable) {
+    public void setIcon(Drawable iconDrawable) {
         tabIcon.setImageDrawable(iconDrawable);
     }
 
-    public void setTabText(@StringRes int stringResId) {
+    public void setText(@StringRes int stringResId) {
         tabText.setText(stringResId);
     }
 
-    public void setTabText(String text) {
+    public void setText(CharSequence text) {
         tabText.setText(text);
     }
 
@@ -153,6 +153,18 @@ public class IconicTab extends LinearLayout {
                     onTabClickListener.onTabClick(IconicTab.this, tabPosition);
             }
         });
+    }
+
+    public CharSequence getText() {
+        return tabText.getText();
+    }
+
+    public Drawable getIcon() {
+        return tabIcon.getDrawable();
+    }
+
+    public int getBadgeCount() {
+        return badgeCount;
     }
 
     public interface OnTabClickListener {
