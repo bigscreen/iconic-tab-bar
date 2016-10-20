@@ -13,7 +13,7 @@ Usage
 -----
 To use IconicTabBar, you only have to add IconicTabBar in your layout XML and add IconicTabBar library in your project via Gradle:
 ```groovy
-compile 'com.bigscreen:iconic-tab-bar:1.0.1'
+compile 'com.bigscreen:iconic-tab-bar:1.0.2'
 ```
 ##### Note
 IconicTabBar is not available yet in maven central, so make sure you have jcenter in your repositories.
