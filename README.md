@@ -64,6 +64,11 @@ Otherwise, you can add tabs programmatically on the Java code.
 iconicTabBar.addTab(R.drawable.ic_chats, "Chats");
 iconicTabBar.addTab(R.drawable.ic_calls, "Calls");
 ```
+You can specify tab's id as well.
+```java
+iconicTabBar.addTab(1, R.drawable.ic_chats, "Chats");
+iconicTabBar.addTab(2, R.drawable.ic_calls, "Calls");
+```
 ##### Note
 *Maximum tabs to be added on IconicTabBar is only 5. Never to try add more than 5 tabs, or your app will crash!*
 
@@ -76,11 +81,12 @@ iconicTabBar.setOnTabSelectedListener(new IconicTabBar.OnTabSelectedListener() {
     @Override
     public void onSelected(IconicTab tab, int position) {
         Log.d(TAG, "selected tab on= " + position);
-        switch (position) {
-            case 0:
+        int tabId = tab.getId();
+        switch (tabId) {
+            case R.id.bottom_chats:
                 Toast.makeText(MainActivity.this, "Chats is selected", Toast.LENGTH_SHORT).show();
                 break;
-            case 1:
+            case R.id.bottom_calls:
                Toast.makeText(MainActivity.this, "Calls is selected", Toast.LENGTH_SHORT).show();
                 break;
             default:
