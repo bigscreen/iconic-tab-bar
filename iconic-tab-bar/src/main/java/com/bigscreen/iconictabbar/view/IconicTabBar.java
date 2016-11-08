@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.MenuRes;
 import android.support.v4.content.ContextCompat;
@@ -38,6 +39,7 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
     private int selectedTabPosition;
     private int unSelectedTabPosition;
 
+    private int backgroundColor;
     private int tabDefaultColor;
     private int tabSelectedColor;
 
@@ -79,15 +81,15 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
 
     private void initStyle() {
         TypedArray styledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.IconicTabBar);
-        int backgroundColor = styledAttributes.getColor(R.styleable.IconicTabBar_barBackground, ContextCompat.getColor(getContext(), R.color.white));
+        int menuResId = styledAttributes.getResourceId(R.styleable.IconicTabBar_tabFromMenu, -1);
+        backgroundColor = styledAttributes.getColor(R.styleable.IconicTabBar_barBackground, ContextCompat.getColor(getContext(), R.color.white));
         tabDefaultColor = styledAttributes.getColor(R.styleable.IconicTabBar_tabDefaultColor, ContextCompat.getColor(getContext(), R.color.defaultColor));
         tabSelectedColor = styledAttributes.getColor(R.styleable.IconicTabBar_tabSelectedColor, ContextCompat.getColor(getContext(), R.color.defaultSelectedColor));
-        int menuResId = styledAttributes.getResourceId(R.styleable.IconicTabBar_tabFromMenu, -1);
 
+        frameTabs.setBackgroundColor(backgroundColor);
         if (menuResId != -1) {
             addTabFromMenu(menuResId);
         }
-        frameTabs.setBackgroundColor(backgroundColor);
 
         styledAttributes.recycle();
     }
@@ -158,7 +160,28 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
     }
 
     @Override
+    public void setBackgroundColor(@ColorInt int backgroundColor) {
+        this.backgroundColor = backgroundColor;
+        frameTabs.setBackgroundColor(backgroundColor);
+    }
+
+    public void setTabDefaultColor(@ColorInt int tabDefaultColor) {
+        this.tabDefaultColor = tabDefaultColor;
+        for (IconicTab tab : tabs) {
+            tab.setTabDefaultColor(tabDefaultColor);
+        }
+    }
+
+    public void setTabSelectedColor(@ColorInt int tabSelectedColor) {
+        this.tabSelectedColor = tabSelectedColor;
+        for (IconicTab tab : tabs) {
+            tab.setTabSelectedColor(tabSelectedColor);
+        }
+    }
+
+    @Override
     public void onTabClick(IconicTab tabBottomBar, int position) {
+        if (tabBottomBar.equals(selectedTab)) return;
         setUnselectedTab(selectedTab, selectedTabPosition);
         setSelectedTab(tabBottomBar, position);
     }
@@ -167,14 +190,14 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
         selectedTab = tab;
         selectedTabPosition = tabPosition;
         if (onTabSelectedListener != null) onTabSelectedListener.onSelected(selectedTab, selectedTabPosition);
-        selectedTab.setSelected();
+        selectedTab.setSelectedWithAnimation();
     }
 
     private void setUnselectedTab(IconicTab tab, int tabPosition) {
         unSelectedTab = tab;
         unSelectedTabPosition = tabPosition;
         if (onTabSelectedListener != null) onTabSelectedListener.onUnselected(unSelectedTab, unSelectedTabPosition);
-        unSelectedTab.setUnselected();
+        unSelectedTab.setUnselectedWithAnimation();
     }
 
     private void initTabSize() {
@@ -202,4 +225,5 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
 
         void onUnselected(IconicTab tab, int position);
     }
+
 }

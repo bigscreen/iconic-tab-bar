@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
@@ -14,8 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bigscreen.iconictabbar.R;
+import com.transitionseverywhere.AutoTransition;
+import com.transitionseverywhere.Transition;
+import com.transitionseverywhere.TransitionManager;
 
 public class IconicTab extends LinearLayout {
+
+    private static final int TRANSITION_DURATION = 200;
 
     private LinearLayout tabItem;
     private ImageView tabIcon;
@@ -108,13 +114,13 @@ public class IconicTab extends LinearLayout {
         tabText.setText(text);
     }
 
-    public void setTabDefaultColor(int tabDefaultColor) {
+    public void setTabDefaultColor(@ColorInt int tabDefaultColor) {
         this.tabDefaultColor = tabDefaultColor;
         tabIcon.setColorFilter(tabDefaultColor);
         tabText.setTextColor(tabDefaultColor);
     }
 
-    public void setTabSelectedColor(int tabSelectedColor) {
+    public void setTabSelectedColor(@ColorInt int tabSelectedColor) {
         this.tabSelectedColor = tabSelectedColor;
     }
 
@@ -130,6 +136,20 @@ public class IconicTab extends LinearLayout {
         tabText.setVisibility(GONE);
     }
 
+    public void setSelectedWithAnimation() {
+        TransitionManager.beginDelayedTransition(this, getTransition());
+        tabIcon.setColorFilter(tabSelectedColor);
+        tabText.setTextColor(tabSelectedColor);
+        tabText.setVisibility(VISIBLE);
+    }
+
+    public void setUnselectedWithAnimation() {
+        TransitionManager.beginDelayedTransition(this, getTransition());
+        tabIcon.setColorFilter(tabDefaultColor);
+        tabText.setTextColor(tabDefaultColor);
+        tabText.setVisibility(GONE);
+    }
+
     public void setBadgeCount(int badgeCount) {
         this.badgeCount = badgeCount;
         if (badgeCount > 0) {
@@ -138,7 +158,6 @@ public class IconicTab extends LinearLayout {
         } else {
             tabBadge.setVisibility(GONE);
         }
-
     }
 
     public void setOnTabClickListener(OnTabClickListener onTabClickListener) {
@@ -153,6 +172,10 @@ public class IconicTab extends LinearLayout {
                     onTabClickListener.onTabClick(IconicTab.this, tabPosition);
             }
         });
+    }
+
+    private Transition getTransition() {
+        return new AutoTransition().setDuration(TRANSITION_DURATION);
     }
 
     public CharSequence getText() {
@@ -170,4 +193,5 @@ public class IconicTab extends LinearLayout {
     public interface OnTabClickListener {
         void onTabClick(IconicTab tabBottomBar, int position);
     }
+
 }
