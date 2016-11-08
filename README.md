@@ -6,7 +6,7 @@
 
 IconicTabBar is an Android custom TabView which its design and pattern are created based on Android BottomBar design pattern (check [this](https://material.google.com/components/bottom-navigation.html)).
 
-<img src="/preview/iconic-tab-bar-demo.gif" alt="sample" title="sample" width="267" height="416" align="right" vspace="40" />
+<img src="/preview/iconic-tab-bar-demo.gif" alt="sample" title="sample" width="237" height="420" align="right" vspace="40" />
 
 
 Usage
