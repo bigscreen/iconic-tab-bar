@@ -5,7 +5,7 @@ android {
     buildToolsVersion project.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.bigscreen.mylibsrepository"
+        applicationId "com.bigscreen.iconictabbardemo"
         minSdkVersion project.ext.minSdkVersion
         targetSdkVersion project.ext.targetSdkVersion
         versionCode project.ext.versionCode
