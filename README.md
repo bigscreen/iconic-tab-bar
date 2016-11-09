@@ -105,8 +105,10 @@ Changelog
 -----
 <b>1.0.3</b><br>
 Tab transition animation, using [Transition Everywhere](https://github.com/andkulikov/Transitions-Everywhere).
+
 <b>1.0.2</b><br>
 Support resource menu id and bug fix.
+
 <b>1.0.1</b><br>
 Fixed tab width auto measurement.
 
