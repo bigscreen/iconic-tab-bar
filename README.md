@@ -46,7 +46,7 @@ You can add tab items from resource menu.
 ```xml
 app:tabFromMenu="@menu/menu_bottom_bar"
 ```
-But IconicTabBar doesn't support menu grouping. It's recommended to use the simplest `menu` code.
+But IconicTabBar doesn't support menu grouping. It's recommended to use the simplest `xml menu` code.
 ```xml
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
@@ -64,13 +64,13 @@ Otherwise, you can add tabs programmatically on the Java code.
 iconicTabBar.addTab(R.drawable.ic_chats, "Chats");
 iconicTabBar.addTab(R.drawable.ic_calls, "Calls");
 ```
-You can specify tab's id as well.
+you can specify tab's id as well.
 ```java
 iconicTabBar.addTab(1, R.drawable.ic_chats, "Chats");
 iconicTabBar.addTab(2, R.drawable.ic_calls, "Calls");
 ```
 ##### Note
-*Maximum tabs to be added on IconicTabBar is only 5. Never to try add more than 5 tabs, or your app will crash!*
+*Maximum tabs to be added on IconicTabBar is only 5. Adding more than 5 tabs will make your app crashes.*
 
 
 Listening Selected Tab
@@ -103,12 +103,12 @@ iconicTabBar.setOnTabSelectedListener(new IconicTabBar.OnTabSelectedListener() {
 
 Changelog
 -----
-#### 1.0.3
+<b>1.0.3</b><br>
 Tab transition animation, using [Transition Everywhere](https://github.com/andkulikov/Transitions-Everywhere).
-#### 1.0.2
+<b>1.0.2</b><br>
 Support resource menu id and bug fix.
-#### 1.0.1
-Fixed tab width auto-adjustment.
+<b>1.0.1</b><br>
+Fixed tab width auto measurement.
 
 
 License
