@@ -101,6 +101,15 @@ iconicTabBar.setOnTabSelectedListener(new IconicTabBar.OnTabSelectedListener() {
 });
 ```
 
+Changelog
+-----
+#### 1.0.3
+Tab transition animation, using [Transition Everywhere](https://github.com/andkulikov/Transitions-Everywhere).
+#### 1.0.2
+Support resource menu id and bug fix.
+#### 1.0.1
+Fixed tab width auto-adjustment.
+
 
 License
 -----

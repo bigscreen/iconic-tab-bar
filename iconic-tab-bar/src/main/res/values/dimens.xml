@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="max_tab_width">104dp</dimen>
+    <dimen name="iconic_tab_max_width">104dp</dimen>
 </resources>

@@ -203,7 +203,7 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
     private void initTabSize() {
         int tabCount = tabs.size();
         int screenWidth = ConfigHelper.getScreenWidth(getContext());
-        int tabMaxWidth = ConfigHelper.getPxFromDimenRes(R.dimen.max_tab_width, getContext());
+        int tabMaxWidth = ConfigHelper.getPxFromDimenRes(R.dimen.iconic_tab_max_width, getContext());
         if ((tabMaxWidth * tabCount) > screenWidth) {
             llTabs.setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
             for (IconicTab tab : tabs) {
