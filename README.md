@@ -13,7 +13,7 @@ Usage
 -----
 To use IconicTabBar, you only have to add IconicTabBar in your layout XML and add IconicTabBar library in your project via Gradle:
 ```groovy
-compile 'com.bigscreen:iconic-tab-bar:1.0.3'
+compile 'com.bigscreen:iconic-tab-bar:1.0.4'
 ```
 ##### Note
 IconicTabBar is not available yet in maven central, so make sure you have jcenter in your repositories.
@@ -103,6 +103,9 @@ iconicTabBar.setOnTabSelectedListener(new IconicTabBar.OnTabSelectedListener() {
 
 Changelog
 -----
+<b>1.0.4</b><br>
+Fixed bugs, tab text improvement.
+
 <b>1.0.3</b><br>
 Tab transition animation, using [Transition Everywhere](https://github.com/andkulikov/Transitions-Everywhere).
 
