@@ -1,4 +1,4 @@
-package com.bigscreen.mylibsrepository;
+package com.bigscreen.iconictabbardemo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
