@@ -1,4 +1,4 @@
-package com.bigscreen.mylibsrepository;
+package com.bigscreen.iconictabbardemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
