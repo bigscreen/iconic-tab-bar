@@ -28,6 +28,7 @@ import java.util.List;
 public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickListener {
 
     public static final int MAX_TAB = 5;
+    private static final int SELECTED_NONE = -1;
 
     private AttributeSet attributeSet;
 
@@ -128,7 +129,7 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
         tab.setOnTabClickListener(this);
         tabs.add(tab);
         llTabs.addView(tab);
-        initTabSize();
+        initTabWidth();
         if (latestTabsSize == 0) {
             selectedTabPosition = 0;
             selectedTab = tab;
@@ -186,6 +187,11 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
         setSelectedTab(tabBottomBar, position);
     }
 
+    public void setSelectedTab(int tabPosition) {
+        if (tabs == null || tabs.size() < tabPosition) return;
+        onTabClick(tabs.get(tabPosition), tabPosition);
+    }
+
     private void setSelectedTab(IconicTab tab, int tabPosition) {
         selectedTab = tab;
         selectedTabPosition = tabPosition;
@@ -200,7 +206,7 @@ public class IconicTabBar extends FrameLayout implements IconicTab.OnTabClickLis
         unSelectedTab.setUnselectedWithAnimation();
     }
 
-    private void initTabSize() {
+    private void initTabWidth() {
         int tabCount = tabs.size();
         int screenWidth = ConfigHelper.getScreenWidth(getContext());
         int tabMaxWidth = ConfigHelper.getPxFromDimenRes(R.dimen.iconic_tab_max_width, getContext());
